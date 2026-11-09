@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Billsheet Support · Billsheet</title>
+    <meta name="description" content="Antwoorden over rekeningen en contracten toevoegen, de gratis versie, een CSV-bestand importeren, herinneringen, back-ups en terugzetten, de eenmalige ontgrendeling, een aankoop herstellen, en gegevens exporteren en wissen.">
+    <meta name="color-scheme" content="light dark">
+    <link rel="canonical" href="https://starbuck-dev.github.io/Billsheet/nl/support/">
+    <link rel="alternate" hreflang="en" href="https://starbuck-dev.github.io/Billsheet/support/">
+    <link rel="alternate" hreflang="de" href="https://starbuck-dev.github.io/Billsheet/de/support/">
+    <link rel="alternate" hreflang="fr" href="https://starbuck-dev.github.io/Billsheet/fr/support/">
+    <link rel="alternate" hreflang="es" href="https://starbuck-dev.github.io/Billsheet/es/support/">
+    <link rel="alternate" hreflang="it" href="https://starbuck-dev.github.io/Billsheet/it/support/">
+    <link rel="alternate" hreflang="pt-BR" href="https://starbuck-dev.github.io/Billsheet/pt-br/support/">
+    <link rel="alternate" hreflang="nl" href="https://starbuck-dev.github.io/Billsheet/nl/support/">
+    <link rel="alternate" hreflang="pl" href="https://starbuck-dev.github.io/Billsheet/pl/support/">
+    <link rel="alternate" hreflang="ru" href="https://starbuck-dev.github.io/Billsheet/ru/support/">
+    <link rel="alternate" hreflang="x-default" href="https://starbuck-dev.github.io/Billsheet/support/">
+    <style>
+:root {
+    color-scheme: dark light;
+    --bg: #1C1E22; --card: #262930; --ink: #ECEAE3; --mute: #9A9890; --line: #343841; --brass: #C9A24A;
+    --warn: #E0A83C; --soft: rgba(201, 162, 74, 0.10); --on-brass: #1C1E22; --shadow: rgba(0, 0, 0, 0.45);
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: #F1EFEA; --card: #FFFFFF; --ink: #1C1E22; --mute: #66655E; --line: #DCD9D2; --brass: #8A6A1E;
+        --warn: #9A5B12; --soft: rgba(138, 106, 30, 0.08); --on-brass: #FFFFFF; --shadow: rgba(28, 30, 34, 0.12);
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0; background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+}
+a { color: var(--brass); text-underline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 16px 12px; }
+.brand {
+    color: var(--brass); font-weight: 600; font-size: 20px; letter-spacing: 0.02em; text-decoration: none;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.lang { position: relative; font-size: 15px; }
+.lang summary {
+    list-style: none; cursor: pointer; padding: 6px 14px; border-radius: 999px; white-space: nowrap;
+    background: var(--card); color: var(--ink); border: 1px solid var(--line);
+}
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: " \25BE"; color: var(--mute); }
+.lang ul {
+    position: absolute; right: 0; z-index: 2; margin: 8px 0 0; padding: 6px; list-style: none; min-width: 190px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px var(--shadow);
+}
+.lang li a { display: block; padding: 7px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.lang li a:hover, .lang li a:focus-visible { background: var(--soft); }
+.lang li a[aria-current="page"] { color: var(--brass); font-weight: 600; }
+.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px; margin: 16px 0;
+}
+h1 { font-size: 28px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 20px; margin: 28px 0 8px; }
+h3 { font-size: 17px; margin: 0 0 6px; }
+p, li { color: var(--mute); }
+strong { color: var(--ink); }
+.date {
+    font-size: 14px; color: var(--mute); margin: 0 0 20px;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.summary {
+    background: var(--soft); border-left: 3px solid var(--brass); border-radius: 8px; padding: 4px 16px;
+    margin: 16px 0;
+}
+.lead { font-size: 18px; color: var(--mute); }
+.button {
+    display: inline-block; background: var(--brass); color: var(--on-brass); font-weight: 600;
+    padding: 12px 28px; border-radius: 24px; text-decoration: none; margin-top: 8px;
+}
+.store { margin: 16px 0 0; }
+.links { display: grid; gap: 12px; margin: 16px 0; }
+.links a {
+    display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 20px; text-decoration: none;
+}
+.links strong { display: block; color: var(--ink); }
+.links span { color: var(--mute); font-size: 15px; }
+mark.todo { background: var(--warn); color: var(--on-brass); padding: 0 4px; border-radius: 4px; }
+footer { padding: 16px 16px 40px; font-size: 14px; color: var(--mute); }
+footer p { color: var(--mute); }
+footer a { color: var(--ink); }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+<header class="wrap top">
+    <a class="brand" href="../">Billsheet</a>
+    <details class="lang">
+        <summary aria-label="Taal">Nederlands</summary>
+        <ul>
+            <li><a href="../../support/" hreflang="en" lang="en">English</a></li>
+            <li><a href="../../de/support/" hreflang="de" lang="de">Deutsch</a></li>
+            <li><a href="../../fr/support/" hreflang="fr" lang="fr">Français</a></li>
+            <li><a href="../../es/support/" hreflang="es" lang="es">Español</a></li>
+            <li><a href="../../it/support/" hreflang="it" lang="it">Italiano</a></li>
+            <li><a href="../../pt-br/support/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+            <li><a href="./" hreflang="nl" lang="nl" aria-current="page">Nederlands</a></li>
+            <li><a href="../../pl/support/" hreflang="pl" lang="pl">Polski</a></li>
+            <li><a href="../../ru/support/" hreflang="ru" lang="ru">Русский</a></li>
+        </ul>
+    </details>
+</header>
+<main class="wrap">
+<section class="card">
+<h1>Billsheet Support</h1>
+<p class="lead">Wat deze maand nog betaald moet worden, en de laatste dag waarop je elk contract nog kunt opzeggen.</p>
+<p><strong>Hulp nodig?</strong> Schrijf naar <a href="mailto:ssx51f@gmail.com">ssx51f@gmail.com</a>. MacLaren's Studio antwoordt meestal binnen twee werkdagen. Tip: via Meer › Neem contact op in de app worden je appversie, iOS-versie en apparaat aan de e-mail toegevoegd.</p>
+<a class="button" href="mailto:ssx51f@gmail.com?subject=Billsheet%20Support">E-mail support</a>
+</section>
+<section>
+<h2>Veelgestelde vragen</h2>
+<div class="card">
+<h3>Hoe voeg ik een rekening, abonnement of contract toe?</h3>
+<p>Tik op het tabblad Maand op <strong>Voeg een rekening toe</strong> (of <strong>+</strong>). Typ het bedrag, of zet <strong>Variabel</strong> aan als het elke keer anders is (het laatste bedrag is dan de schatting), kies hoe vaak het terugkomt — „Maandelijks · op de 15e” betekent op de 15e, niet elke 30 dagen —, geef het een naam en tik op <strong>Bewaar post</strong>. Zet bij een contract voor de sportschool, telefoon of verzekering <strong>Dit is een contract</strong> aan en vul de ingangsdatum, de minimale looptijd, de opzegtermijn en de verlenging in: de editor toont de datum waarvóór je moet opzeggen en wanneer je een herinnering krijgt.</p>
+</div>
+<div class="card">
+<h3>Wat is gratis, en wat telt niet mee?</h3>
+<p>Gratis, voor altijd: maximaal zes actieve posten van elk soort — rekeningen, abonnementen en contracten — met de hele betaalgeschiedenis, contracten met hun uiterste opzegdatum, herinneringen, widgets, import, export en back-ups. Beëindigde posten (een opgezegd contract, een rekening voorbij de einddatum) en gearchiveerde posten tellen niet mee, en het tabblad Maand laat al vóór je eerste invoer zien hoeveel gratis posten je hebt gebruikt. De eenmalige aankoop <strong>Alles ontgrendelen</strong> geeft onbeperkt posten en meerdere lijsten (privé, gezin, zakelijk). Niets wat je hebt ingevoerd of geëxporteerd wordt ooit vergrendeld, en een import komt altijd helemaal binnen. Er is geen abonnement en er zijn geen advertenties; de App Store toont de prijs in je eigen valuta voordat je koopt.</p>
+</div>
+<div class="card">
+<h3>Hoe importeer ik mijn rekeningen uit de app die ik eerder gebruikte?</h3>
+<p>Exporteer je rekeningen als CSV-bestand uit de app of de spreadsheet die je eerder gebruikte. Tik in Billsheet op Meer › Importeren › <strong>Importeer een CSV-bestand</strong> en kies het bestand. Billsheet herkent de kolommen (naam, bedrag, vervaldatum en hoe vaak het terugkomt) en de datumnotatie, laat je een kolom toewijzen die het niet herkende, toont een voorbeeld met het aantal posten en importeert elke rij — ook in de gratis versie: brengt het bestand meer dan zes posten mee, dan komen ze allemaal binnen en kun je er een paar archiveren of ontgrendelen. <strong>Importeer het voorbeeldbestand</strong> laat zien hoe een bestand eruitziet dat werkt.</p>
+</div>
+<div class="card">
+<h3>Waarom maakt Billsheet geen verbinding met mijn bank en zegt het geen contracten voor me op?</h3>
+<p>Omdat je overzicht van jou moet blijven. Billsheet vraagt nooit om je bankgegevens en stuurt nooit iets ergens naartoe: je voert elke rekening één keer in, en die komt vanzelf terug. Billsheet betaalt ook geen rekeningen en verstuurt geen opzeggingen — het vertelt je de laatste dag waarop je nog kunt opzeggen, herinnert je 14 en 3 dagen vooraf en houdt bij wanneer je hebt opgezegd. Je zegt zelf op bij de aanbieder, zoals je contract voorschrijft; tik daarna in de post op <strong>Ik heb dit contract opgezegd</strong>, en de post gaat naar Beëindigd.</p>
+</div>
+<div class="card">
+<h3>Waarom kwam een herinnering niet binnen?</h3>
+<p>Herinneringen zijn lokale meldingen van je iPhone. Controleer of meldingen voor Billsheet zijn toegestaan in Instellingen › Berichtgeving op je iPhone (Meer › Herinneringen toont <strong>Open Instellingen</strong> als ze uit staan) en of een focus ze niet dempt. In Meer › Herinneringen stel je in hoeveel dagen vóór de vervaldatum en op welk tijdstip je een herinnering krijgt; voor contracten komt de herinnering 14 en 3 dagen vóór de uiterste opzegdatum. Een betaling die als betaald is gemarkeerd, krijgt geen herinnering meer, en een post met automatische incasso markeert zichzelf op de vervaldag als betaald, zonder herinnering. Billsheet plant de herinneringen opnieuw in elke keer dat je de app opent, en op de achtergrond; staat Ververs op achtergrond uit voor Billsheet, open de app dan af en toe zodat de volgende herinneringen worden ingepland.</p>
+</div>
+<div class="card">
+<h3>Hoe markeer ik een betaling als betaald?</h3>
+<p>Veeg over de rij op het tabblad Maand en tik op <strong>Markeer als betaald</strong>, gebruik <strong>Markeer als betaald</strong> in de herinnering zelf zonder de app te openen, of markeer de betaling in de betaalgeschiedenis van de post. Bij een variabele rekening kun je het werkelijke bedrag invullen. Posten met <strong>Automatische incasso</strong> aan markeren zichzelf op de vervaldag als betaald, met het label „auto” en met <strong>Herstel</strong> als het geld toch niet is afgeschreven.</p>
+</div>
+<div class="card">
+<h3>Wat laten de groepen, de Kalender en de widgets zien?</h3>
+<p>Stel je salarisdag in via Meer › <strong>Salarisdag</strong> (een dag van de maand, de laatste werkdag of elke twee weken), dan verdeelt het tabblad Maand de betalingen over vóór salaris, na salaris en betaald; zonder salarisdag groepeert het ze per week. Het tabblad Kalender toont de maand als raster met de bedragen onder de datums en markeert de salarisdag en de uiterste opzegdatums. De widgets tonen wat deze maand nog betaald moet worden, de volgende drie betalingen en, op het toegangsscherm, de volgende betaling.</p>
+</div>
+<div class="card">
+<h3>Waar staan mijn back-ups?</h3>
+<p>Billsheet maakt één keer per dag een back-up op je iPhone nadat je iets hebt toegevoegd, gewijzigd of gemarkeerd, en vóór een import, het terugzetten van een back-up of Wis alle gegevens; de laatste tien automatische versies worden bewaard. Tik op <strong>Maak nu een back-up</strong> in Meer › Back-ups voor een eigen versie, die nooit automatisch wordt verwijderd. Met <strong>Deel</strong> bij een versie bewaar je die als bestand in Bestanden, op een computer of op een ander apparaat.</p>
+</div>
+<div class="card">
+<h3>Hoe zet ik een back-up terug?</h3>
+<p>Kies een versie in Meer › Back-ups en tik op <strong>Zet terug</strong>, of tik op <strong>Zet terug uit bestand…</strong> om een back-upbestand te openen. Je ziet eerst een voorbeeld van wat er wordt toegevoegd; met <strong>Voeg samen met mijn gegevens</strong> voeg je het daarna toe. Terugzetten voegt altijd samen: er wordt niets gewist of overschreven, en er wordt eerst automatisch een back-up van je huidige gegevens gemaakt.</p>
+</div>
+<div class="card">
+<h3>Hoe herstel ik mijn aankoop op een nieuwe iPhone?</h3>
+<p>Log in met het Apple Account waarmee je de ontgrendeling hebt gekocht en tik op <strong>Herstel aankopen</strong> in Meer › Aankoop of op het ontgrendelscherm. De aankoop hoort bij je Apple Account, dus hij werkt op elke iPhone die je met dat account gebruikt.</p>
+</div>
+<div class="card">
+<h3>Hoe exporteer of wis ik mijn gegevens?</h3>
+<p>Meer › Exporteren biedt <strong>Exporteer posten als CSV</strong> en <strong>Exporteer betalingen als CSV</strong>: elke post en elke betaling, voor Numbers, Excel of Google Sheets. Om alles te verwijderen, gebruik je Meer › <strong>Wis alle gegevens</strong>: elke lijst, post en betaling wordt na een laatste back-up gewist, en de back-ups blijven staan tot je ze verwijdert in Meer › Back-ups. Als je de app verwijdert, worden alle gegevens van de app, back-ups inbegrepen, van je iPhone gewist. Wij hebben geen kopie, want er wordt nooit iets naar ons gestuurd.</p>
+</div>
+<div class="card">
+<h3>Welke apparaten en talen worden ondersteund?</h3>
+<p>Billsheet werkt op iPhone met iOS 18 of nieuwer, in het Engels, Duits, Frans, Spaans, Italiaans, Braziliaans-Portugees, Nederlands, Pools en Russisch. Bedragen, datums en de eerste dag van de week volgen de regio van je iPhone. De app werkt volledig offline.</p>
+</div>
+</section>
+</main>
+<footer class="wrap">
+    <nav><a href="./">Support</a> <a href="../privacy/">Privacybeleid</a> <a href="../terms/">Gebruiksvoorwaarden</a></nav>
+    <p>&copy; 2026 MacLaren's Studio. Alle rechten voorbehouden.</p>
+</footer>
+</body>
+</html>

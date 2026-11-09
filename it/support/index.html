@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Supporto Billsheet · Billsheet</title>
+    <meta name="description" content="Risposte su come aggiungere bollette e contratti, la versione gratuita, l’importazione di un file CSV, i promemoria, i backup e il ripristino, lo sblocco con acquisto unico, il ripristino di un acquisto, l’esportazione e l’eliminazione dei dati.">
+    <meta name="color-scheme" content="light dark">
+    <link rel="canonical" href="https://starbuck-dev.github.io/Billsheet/it/support/">
+    <link rel="alternate" hreflang="en" href="https://starbuck-dev.github.io/Billsheet/support/">
+    <link rel="alternate" hreflang="de" href="https://starbuck-dev.github.io/Billsheet/de/support/">
+    <link rel="alternate" hreflang="fr" href="https://starbuck-dev.github.io/Billsheet/fr/support/">
+    <link rel="alternate" hreflang="es" href="https://starbuck-dev.github.io/Billsheet/es/support/">
+    <link rel="alternate" hreflang="it" href="https://starbuck-dev.github.io/Billsheet/it/support/">
+    <link rel="alternate" hreflang="pt-BR" href="https://starbuck-dev.github.io/Billsheet/pt-br/support/">
+    <link rel="alternate" hreflang="nl" href="https://starbuck-dev.github.io/Billsheet/nl/support/">
+    <link rel="alternate" hreflang="pl" href="https://starbuck-dev.github.io/Billsheet/pl/support/">
+    <link rel="alternate" hreflang="ru" href="https://starbuck-dev.github.io/Billsheet/ru/support/">
+    <link rel="alternate" hreflang="x-default" href="https://starbuck-dev.github.io/Billsheet/support/">
+    <style>
+:root {
+    color-scheme: dark light;
+    --bg: #1C1E22; --card: #262930; --ink: #ECEAE3; --mute: #9A9890; --line: #343841; --brass: #C9A24A;
+    --warn: #E0A83C; --soft: rgba(201, 162, 74, 0.10); --on-brass: #1C1E22; --shadow: rgba(0, 0, 0, 0.45);
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: #F1EFEA; --card: #FFFFFF; --ink: #1C1E22; --mute: #66655E; --line: #DCD9D2; --brass: #8A6A1E;
+        --warn: #9A5B12; --soft: rgba(138, 106, 30, 0.08); --on-brass: #FFFFFF; --shadow: rgba(28, 30, 34, 0.12);
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0; background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+}
+a { color: var(--brass); text-underline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 16px 12px; }
+.brand {
+    color: var(--brass); font-weight: 600; font-size: 20px; letter-spacing: 0.02em; text-decoration: none;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.lang { position: relative; font-size: 15px; }
+.lang summary {
+    list-style: none; cursor: pointer; padding: 6px 14px; border-radius: 999px; white-space: nowrap;
+    background: var(--card); color: var(--ink); border: 1px solid var(--line);
+}
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: " \25BE"; color: var(--mute); }
+.lang ul {
+    position: absolute; right: 0; z-index: 2; margin: 8px 0 0; padding: 6px; list-style: none; min-width: 190px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px var(--shadow);
+}
+.lang li a { display: block; padding: 7px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.lang li a:hover, .lang li a:focus-visible { background: var(--soft); }
+.lang li a[aria-current="page"] { color: var(--brass); font-weight: 600; }
+.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px; margin: 16px 0;
+}
+h1 { font-size: 28px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 20px; margin: 28px 0 8px; }
+h3 { font-size: 17px; margin: 0 0 6px; }
+p, li { color: var(--mute); }
+strong { color: var(--ink); }
+.date {
+    font-size: 14px; color: var(--mute); margin: 0 0 20px;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.summary {
+    background: var(--soft); border-left: 3px solid var(--brass); border-radius: 8px; padding: 4px 16px;
+    margin: 16px 0;
+}
+.lead { font-size: 18px; color: var(--mute); }
+.button {
+    display: inline-block; background: var(--brass); color: var(--on-brass); font-weight: 600;
+    padding: 12px 28px; border-radius: 24px; text-decoration: none; margin-top: 8px;
+}
+.store { margin: 16px 0 0; }
+.links { display: grid; gap: 12px; margin: 16px 0; }
+.links a {
+    display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 20px; text-decoration: none;
+}
+.links strong { display: block; color: var(--ink); }
+.links span { color: var(--mute); font-size: 15px; }
+mark.todo { background: var(--warn); color: var(--on-brass); padding: 0 4px; border-radius: 4px; }
+footer { padding: 16px 16px 40px; font-size: 14px; color: var(--mute); }
+footer p { color: var(--mute); }
+footer a { color: var(--ink); }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+<header class="wrap top">
+    <a class="brand" href="../">Billsheet</a>
+    <details class="lang">
+        <summary aria-label="Lingua">Italiano</summary>
+        <ul>
+            <li><a href="../../support/" hreflang="en" lang="en">English</a></li>
+            <li><a href="../../de/support/" hreflang="de" lang="de">Deutsch</a></li>
+            <li><a href="../../fr/support/" hreflang="fr" lang="fr">Français</a></li>
+            <li><a href="../../es/support/" hreflang="es" lang="es">Español</a></li>
+            <li><a href="./" hreflang="it" lang="it" aria-current="page">Italiano</a></li>
+            <li><a href="../../pt-br/support/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+            <li><a href="../../nl/support/" hreflang="nl" lang="nl">Nederlands</a></li>
+            <li><a href="../../pl/support/" hreflang="pl" lang="pl">Polski</a></li>
+            <li><a href="../../ru/support/" hreflang="ru" lang="ru">Русский</a></li>
+        </ul>
+    </details>
+</header>
+<main class="wrap">
+<section class="card">
+<h1>Supporto Billsheet</h1>
+<p class="lead">Cosa resta da pagare questo mese e l’ultimo giorno utile per disdire ogni contratto.</p>
+<p><strong>Ti serve aiuto?</strong> Scrivi a <a href="mailto:ssx51f@gmail.com">ssx51f@gmail.com</a>. Di solito MacLaren's Studio risponde entro due giorni lavorativi. Suggerimento: Altro › Contatta il supporto nell’app aggiunge all’email la versione dell’app, la versione di iOS e il dispositivo.</p>
+<a class="button" href="mailto:ssx51f@gmail.com?subject=Supporto%20Billsheet">Scrivi al supporto</a>
+</section>
+<section>
+<h2>Domande frequenti</h2>
+<div class="card">
+<h3>Come aggiungo una bolletta, un abbonamento o un contratto?</h3>
+<p>Nella scheda Mese tocca <strong>Aggiungi una bolletta</strong> (o <strong>+</strong>). Inserisci l’importo, oppure attiva <strong>Variabile</strong> se cambia ogni volta (l’ultimo importo farà da stima), scegli come si ripete — “Mensile · il 15” vuol dire il 15 del mese, non ogni 30 giorni —, dagli un nome e tocca <strong>Salva voce</strong>. Per un contratto di palestra, telefono o assicurazione attiva <strong>È un contratto</strong> e compila l’inizio, la durata minima, il preavviso e per quanto si rinnova: l’editor mostra la data entro cui devi disdire e quando riceverai il promemoria.</p>
+</div>
+<div class="card">
+<h3>Cosa è gratis e cosa non conta?</h3>
+<p>Gratis, per sempre: fino a sei voci attive di qualsiasi tipo — bollette, abbonamenti e contratti — con tutto lo storico dei pagamenti, i contratti con le loro date di disdetta, i promemoria, i widget, l’importazione, l’esportazione e i backup. Le voci terminate (un contratto disdetto, una bolletta oltre la data di fine) e quelle archiviate non contano, e la scheda Mese mostra quante voci gratuite hai già usato prima che tu ne aggiunga una. L’acquisto unico <strong>Sblocco completo</strong> aggiunge voci illimitate e più elenchi (personale, famiglia, lavoro). Nulla di ciò che hai inserito o esportato viene mai bloccato, e un’importazione entra sempre per intero. Non ci sono abbonamenti né pubblicità; prima dell’acquisto l’App Store mostra il prezzo nella tua valuta.</p>
+</div>
+<div class="card">
+<h3>Come importo le bollette dall’app che usavo prima?</h3>
+<p>Esporta le tue bollette come file CSV dall’app o dal foglio di calcolo che usavi prima. In Billsheet tocca Altro › Importa › <strong>Importa un file CSV</strong> e scegli il file. Billsheet riconosce le colonne (nome, importo, scadenza e frequenza) e il formato delle date, ti lascia assegnare una colonna che non ha riconosciuto, mostra un’anteprima con il numero di voci e importa ogni riga — anche nella versione gratuita: se il file contiene più di sei voci, entrano tutte, e puoi archiviarne alcune o sbloccare l’app. <strong>Importa il file di esempio</strong> mostra com’è fatto un file che funziona.</p>
+</div>
+<div class="card">
+<h3>Perché Billsheet non si collega alla mia banca e non disdice i contratti al posto mio?</h3>
+<p>Perché il tuo foglio deve restare tuo. Billsheet non chiede mai le credenziali della banca e non invia mai nulla da nessuna parte: aggiungi ogni bolletta una volta, e poi si ripete da sola. Billsheet non paga le bollette e non invia nemmeno disdette: ti dice l’ultimo giorno utile per disdire, te lo ricorda 14 e 3 giorni prima e tiene nota di quando hai disdetto. La disdetta la invii tu al fornitore, come prevede il tuo contratto; poi tocca <strong>Ho disdetto questo contratto</strong> nella voce, che passa tra le voci terminate.</p>
+</div>
+<div class="card">
+<h3>Perché non è arrivato un promemoria?</h3>
+<p>I promemoria sono notifiche locali del tuo iPhone. Controlla che le notifiche di Billsheet siano consentite in Impostazioni › Notifiche sull’iPhone (Altro › Promemoria mostra <strong>Apri Impostazioni</strong> quando sono disattivate) e che una modalità Full immersion non le silenzi. In Altro › Promemoria scegli quanti giorni prima della scadenza ricevere il promemoria e a che ora; per i contratti il promemoria arriva 14 e 3 giorni prima della data di disdetta. Un pagamento segnato come pagato non viene più ricordato, e una voce con addebito automatico si segna da sola come pagata il giorno della scadenza, senza promemoria. Billsheet pianifica di nuovo i promemoria ogni volta che lo apri e in background; se Aggiorna app in background è disattivato per Billsheet, apri l’app di tanto in tanto perché i prossimi promemoria vengano pianificati.</p>
+</div>
+<div class="card">
+<h3>Come segno un pagamento come pagato?</h3>
+<p>Scorri la riga nella scheda Mese e tocca <strong>Segna come pagato</strong>, usa <strong>Segna come pagato</strong> direttamente nel promemoria senza aprire l’app, oppure segnalo nello storico dei pagamenti della voce. Per una bolletta variabile puoi inserire l’importo effettivo. Le voci con <strong>Addebito automatico</strong> attivo si segnano da sole come pagate il giorno della scadenza, con l’etichetta “auto” e con <strong>Annulla</strong> se il denaro non è uscito.</p>
+</div>
+<div class="card">
+<h3>Cosa mostrano i gruppi, il Calendario e i widget?</h3>
+<p>Imposta il tuo giorno di paga in Altro › <strong>Giorno di paga</strong> (un giorno del mese, l’ultimo giorno lavorativo oppure ogni due settimane) e la scheda Mese divide i pagamenti tra prima dello stipendio, dopo lo stipendio e già pagati; senza un giorno di paga li raggruppa per settimana. La scheda Calendario mostra il mese come una griglia con gli importi sotto le date e segna il giorno di paga e le date entro cui disdire. I widget mostrano quanto resta da pagare questo mese, i prossimi tre pagamenti e, sulla schermata di blocco, il prossimo pagamento.</p>
+</div>
+<div class="card">
+<h3>Dove sono i miei backup?</h3>
+<p>Billsheet crea un backup sul tuo iPhone una volta al giorno dopo che hai aggiunto, modificato o segnato qualcosa, e prima di un’importazione, di un ripristino o di Elimina tutti i dati; vengono conservate le ultime dieci versioni automatiche. Tocca <strong>Esegui backup ora</strong> in Altro › Backup per creare una versione tua, che non viene mai rimossa automaticamente. <strong>Condividi</strong> su una versione la salva come file in File, su un computer o su un altro dispositivo.</p>
+</div>
+<div class="card">
+<h3>Come ripristino un backup?</h3>
+<p>Scegli una versione in Altro › Backup e tocca <strong>Ripristina</strong>, oppure tocca <strong>Ripristina da file…</strong> per aprire un file di backup. Prima vedi un’anteprima di ciò che verrà aggiunto; poi <strong>Unisci ai miei dati</strong> lo aggiunge. Il ripristino unisce sempre: nulla viene eliminato o sovrascritto, e prima viene creato automaticamente un backup dei tuoi dati attuali.</p>
+</div>
+<div class="card">
+<h3>Come ripristino l’acquisto su un nuovo iPhone?</h3>
+<p>Accedi con l’Account Apple con cui hai acquistato lo sblocco, poi tocca <strong>Ripristina acquisti</strong> in Altro › Acquisto o nella schermata di sblocco. L’acquisto appartiene al tuo Account Apple, quindi funziona su ogni iPhone che usi con quell’account.</p>
+</div>
+<div class="card">
+<h3>Come esporto o elimino i miei dati?</h3>
+<p>Altro › Esporta offre <strong>Esporta voci in CSV</strong> ed <strong>Esporta pagamenti in CSV</strong>: tutte le voci e tutti i pagamenti, per Numbers, Excel o Fogli Google. Per rimuovere tutto, usa Altro › <strong>Elimina tutti i dati</strong>: ogni elenco, voce e pagamento viene eliminato dopo un ultimo backup, e i backup restano finché non li elimini in Altro › Backup. Eliminando l’app rimuovi dal tuo iPhone tutti i suoi dati, backup compresi. Noi non ne conserviamo alcuna copia, perché non ci viene mai inviato nulla.</p>
+</div>
+<div class="card">
+<h3>Quali dispositivi e lingue sono supportati?</h3>
+<p>Billsheet funziona su iPhone con iOS 18 o versioni successive, in inglese, tedesco, francese, spagnolo, italiano, portoghese brasiliano, olandese, polacco e russo. Importi, date e primo giorno della settimana seguono la regione del tuo iPhone. Funziona completamente offline.</p>
+</div>
+</section>
+</main>
+<footer class="wrap">
+    <nav><a href="./">Supporto</a> <a href="../privacy/">Informativa sulla privacy</a> <a href="../terms/">Condizioni d’uso</a></nav>
+    <p>&copy; 2026 MacLaren's Studio. Tutti i diritti riservati.</p>
+</footer>
+</body>
+</html>

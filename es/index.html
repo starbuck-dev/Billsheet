@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Billsheet · Recibos, suscripciones y contratos en una sola hoja</title>
+    <meta name="description" content="Billsheet es una app para iPhone para los recibos, suscripciones y contratos que llevas tú mismo: lo que queda pendiente este mes, lo que ya está pagado y el último día en que aún puedes cancelar cada contrato. Soporte, política de privacidad y condiciones de uso.">
+    <meta name="color-scheme" content="light dark">
+    <link rel="canonical" href="https://starbuck-dev.github.io/Billsheet/es/">
+    <link rel="alternate" hreflang="en" href="https://starbuck-dev.github.io/Billsheet/">
+    <link rel="alternate" hreflang="de" href="https://starbuck-dev.github.io/Billsheet/de/">
+    <link rel="alternate" hreflang="fr" href="https://starbuck-dev.github.io/Billsheet/fr/">
+    <link rel="alternate" hreflang="es" href="https://starbuck-dev.github.io/Billsheet/es/">
+    <link rel="alternate" hreflang="it" href="https://starbuck-dev.github.io/Billsheet/it/">
+    <link rel="alternate" hreflang="pt-BR" href="https://starbuck-dev.github.io/Billsheet/pt-br/">
+    <link rel="alternate" hreflang="nl" href="https://starbuck-dev.github.io/Billsheet/nl/">
+    <link rel="alternate" hreflang="pl" href="https://starbuck-dev.github.io/Billsheet/pl/">
+    <link rel="alternate" hreflang="ru" href="https://starbuck-dev.github.io/Billsheet/ru/">
+    <link rel="alternate" hreflang="x-default" href="https://starbuck-dev.github.io/Billsheet/">
+    <style>
+:root {
+    color-scheme: dark light;
+    --bg: #1C1E22; --card: #262930; --ink: #ECEAE3; --mute: #9A9890; --line: #343841; --brass: #C9A24A;
+    --warn: #E0A83C; --soft: rgba(201, 162, 74, 0.10); --on-brass: #1C1E22; --shadow: rgba(0, 0, 0, 0.45);
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: #F1EFEA; --card: #FFFFFF; --ink: #1C1E22; --mute: #66655E; --line: #DCD9D2; --brass: #8A6A1E;
+        --warn: #9A5B12; --soft: rgba(138, 106, 30, 0.08); --on-brass: #FFFFFF; --shadow: rgba(28, 30, 34, 0.12);
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0; background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+}
+a { color: var(--brass); text-underline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 16px 12px; }
+.brand {
+    color: var(--brass); font-weight: 600; font-size: 20px; letter-spacing: 0.02em; text-decoration: none;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.lang { position: relative; font-size: 15px; }
+.lang summary {
+    list-style: none; cursor: pointer; padding: 6px 14px; border-radius: 999px; white-space: nowrap;
+    background: var(--card); color: var(--ink); border: 1px solid var(--line);
+}
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: " \25BE"; color: var(--mute); }
+.lang ul {
+    position: absolute; right: 0; z-index: 2; margin: 8px 0 0; padding: 6px; list-style: none; min-width: 190px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px var(--shadow);
+}
+.lang li a { display: block; padding: 7px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.lang li a:hover, .lang li a:focus-visible { background: var(--soft); }
+.lang li a[aria-current="page"] { color: var(--brass); font-weight: 600; }
+.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px; margin: 16px 0;
+}
+h1 { font-size: 28px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 20px; margin: 28px 0 8px; }
+h3 { font-size: 17px; margin: 0 0 6px; }
+p, li { color: var(--mute); }
+strong { color: var(--ink); }
+.date {
+    font-size: 14px; color: var(--mute); margin: 0 0 20px;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.summary {
+    background: var(--soft); border-left: 3px solid var(--brass); border-radius: 8px; padding: 4px 16px;
+    margin: 16px 0;
+}
+.lead { font-size: 18px; color: var(--mute); }
+.button {
+    display: inline-block; background: var(--brass); color: var(--on-brass); font-weight: 600;
+    padding: 12px 28px; border-radius: 24px; text-decoration: none; margin-top: 8px;
+}
+.store { margin: 16px 0 0; }
+.links { display: grid; gap: 12px; margin: 16px 0; }
+.links a {
+    display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 20px; text-decoration: none;
+}
+.links strong { display: block; color: var(--ink); }
+.links span { color: var(--mute); font-size: 15px; }
+mark.todo { background: var(--warn); color: var(--on-brass); padding: 0 4px; border-radius: 4px; }
+footer { padding: 16px 16px 40px; font-size: 14px; color: var(--mute); }
+footer p { color: var(--mute); }
+footer a { color: var(--ink); }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+<header class="wrap top">
+    <a class="brand" href="./">Billsheet</a>
+    <details class="lang">
+        <summary aria-label="Idioma">Español</summary>
+        <ul>
+            <li><a href="../" hreflang="en" lang="en">English</a></li>
+            <li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li>
+            <li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li>
+            <li><a href="./" hreflang="es" lang="es" aria-current="page">Español</a></li>
+            <li><a href="../it/" hreflang="it" lang="it">Italiano</a></li>
+            <li><a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+            <li><a href="../nl/" hreflang="nl" lang="nl">Nederlands</a></li>
+            <li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li>
+            <li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li>
+        </ul>
+    </details>
+</header>
+<main class="wrap">
+<section class="card">
+<h1>Lo que queda pendiente este mes y el último día en que aún puedes cancelar cada contrato.</h1>
+<p>Billsheet es una hoja con tus recibos, suscripciones y contratos que llevas tú mismo. Arriba, lo que queda pendiente este mes, con una barra de pagado y pendiente. Debajo, cada pago con su importe y los días que faltan para el vencimiento, agrupados antes y después del día de cobro o por semanas. Para cada contrato, Billsheet calcula la fecha límite para cancelar a partir del inicio, la permanencia, el preaviso y la renovación, te avisa a tiempo y te muestra lo que cuesta dejarla pasar. Tú mismo añades los recibos: Billsheet no se conecta a tu banco, no paga nada y no cancela nada por ti. Sin cuenta, sin servidor, sin anuncios: tu hoja se queda en tu iPhone.</p>
+<p class="store"><a class="button" href="https://apps.apple.com/app/id6832767524">Billsheet en el App Store</a></p>
+</section>
+<nav class="links">
+    <a href="support/"><strong>Soporte</strong><span>Preguntas, respuestas y cómo contactar con nosotros</span></a>
+    <a href="privacy/"><strong>Política de privacidad</strong><span>Billsheet no recopila ningún dato</span></a>
+    <a href="terms/"><strong>Condiciones de uso</strong><span>La licencia estándar de Apple y la compra única</span></a>
+</nav>
+</main>
+<footer class="wrap">
+    <nav><a href="support/">Soporte</a> <a href="privacy/">Política de privacidad</a> <a href="terms/">Condiciones de uso</a></nav>
+    <p>&copy; 2026 MacLaren's Studio. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>

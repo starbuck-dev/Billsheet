@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wsparcie Billsheet · Billsheet</title>
+    <meta name="description" content="Odpowiedzi na temat dodawania rachunków i umów, wersji bezpłatnej, importu pliku CSV, przypomnień, kopii zapasowych i przywracania, jednorazowego odblokowania, przywracania zakupu, eksportu i usuwania danych.">
+    <meta name="color-scheme" content="light dark">
+    <link rel="canonical" href="https://starbuck-dev.github.io/Billsheet/pl/support/">
+    <link rel="alternate" hreflang="en" href="https://starbuck-dev.github.io/Billsheet/support/">
+    <link rel="alternate" hreflang="de" href="https://starbuck-dev.github.io/Billsheet/de/support/">
+    <link rel="alternate" hreflang="fr" href="https://starbuck-dev.github.io/Billsheet/fr/support/">
+    <link rel="alternate" hreflang="es" href="https://starbuck-dev.github.io/Billsheet/es/support/">
+    <link rel="alternate" hreflang="it" href="https://starbuck-dev.github.io/Billsheet/it/support/">
+    <link rel="alternate" hreflang="pt-BR" href="https://starbuck-dev.github.io/Billsheet/pt-br/support/">
+    <link rel="alternate" hreflang="nl" href="https://starbuck-dev.github.io/Billsheet/nl/support/">
+    <link rel="alternate" hreflang="pl" href="https://starbuck-dev.github.io/Billsheet/pl/support/">
+    <link rel="alternate" hreflang="ru" href="https://starbuck-dev.github.io/Billsheet/ru/support/">
+    <link rel="alternate" hreflang="x-default" href="https://starbuck-dev.github.io/Billsheet/support/">
+    <style>
+:root {
+    color-scheme: dark light;
+    --bg: #1C1E22; --card: #262930; --ink: #ECEAE3; --mute: #9A9890; --line: #343841; --brass: #C9A24A;
+    --warn: #E0A83C; --soft: rgba(201, 162, 74, 0.10); --on-brass: #1C1E22; --shadow: rgba(0, 0, 0, 0.45);
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: #F1EFEA; --card: #FFFFFF; --ink: #1C1E22; --mute: #66655E; --line: #DCD9D2; --brass: #8A6A1E;
+        --warn: #9A5B12; --soft: rgba(138, 106, 30, 0.08); --on-brass: #FFFFFF; --shadow: rgba(28, 30, 34, 0.12);
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0; background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+}
+a { color: var(--brass); text-underline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 16px 12px; }
+.brand {
+    color: var(--brass); font-weight: 600; font-size: 20px; letter-spacing: 0.02em; text-decoration: none;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.lang { position: relative; font-size: 15px; }
+.lang summary {
+    list-style: none; cursor: pointer; padding: 6px 14px; border-radius: 999px; white-space: nowrap;
+    background: var(--card); color: var(--ink); border: 1px solid var(--line);
+}
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: " \25BE"; color: var(--mute); }
+.lang ul {
+    position: absolute; right: 0; z-index: 2; margin: 8px 0 0; padding: 6px; list-style: none; min-width: 190px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px var(--shadow);
+}
+.lang li a { display: block; padding: 7px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.lang li a:hover, .lang li a:focus-visible { background: var(--soft); }
+.lang li a[aria-current="page"] { color: var(--brass); font-weight: 600; }
+.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px; margin: 16px 0;
+}
+h1 { font-size: 28px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 20px; margin: 28px 0 8px; }
+h3 { font-size: 17px; margin: 0 0 6px; }
+p, li { color: var(--mute); }
+strong { color: var(--ink); }
+.date {
+    font-size: 14px; color: var(--mute); margin: 0 0 20px;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.summary {
+    background: var(--soft); border-left: 3px solid var(--brass); border-radius: 8px; padding: 4px 16px;
+    margin: 16px 0;
+}
+.lead { font-size: 18px; color: var(--mute); }
+.button {
+    display: inline-block; background: var(--brass); color: var(--on-brass); font-weight: 600;
+    padding: 12px 28px; border-radius: 24px; text-decoration: none; margin-top: 8px;
+}
+.store { margin: 16px 0 0; }
+.links { display: grid; gap: 12px; margin: 16px 0; }
+.links a {
+    display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 20px; text-decoration: none;
+}
+.links strong { display: block; color: var(--ink); }
+.links span { color: var(--mute); font-size: 15px; }
+mark.todo { background: var(--warn); color: var(--on-brass); padding: 0 4px; border-radius: 4px; }
+footer { padding: 16px 16px 40px; font-size: 14px; color: var(--mute); }
+footer p { color: var(--mute); }
+footer a { color: var(--ink); }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+<header class="wrap top">
+    <a class="brand" href="../">Billsheet</a>
+    <details class="lang">
+        <summary aria-label="Język">Polski</summary>
+        <ul>
+            <li><a href="../../support/" hreflang="en" lang="en">English</a></li>
+            <li><a href="../../de/support/" hreflang="de" lang="de">Deutsch</a></li>
+            <li><a href="../../fr/support/" hreflang="fr" lang="fr">Français</a></li>
+            <li><a href="../../es/support/" hreflang="es" lang="es">Español</a></li>
+            <li><a href="../../it/support/" hreflang="it" lang="it">Italiano</a></li>
+            <li><a href="../../pt-br/support/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+            <li><a href="../../nl/support/" hreflang="nl" lang="nl">Nederlands</a></li>
+            <li><a href="./" hreflang="pl" lang="pl" aria-current="page">Polski</a></li>
+            <li><a href="../../ru/support/" hreflang="ru" lang="ru">Русский</a></li>
+        </ul>
+    </details>
+</header>
+<main class="wrap">
+<section class="card">
+<h1>Wsparcie Billsheet</h1>
+<p class="lead">Co jeszcze zostało do zapłaty w tym miesiącu i ostatni dzień na wypowiedzenie każdej umowy.</p>
+<p><strong>Potrzebujesz pomocy?</strong> Napisz na <a href="mailto:ssx51f@gmail.com">ssx51f@gmail.com</a>. MacLaren's Studio zwykle odpowiada w ciągu dwóch dni roboczych. Wskazówka: opcja Więcej › Kontakt z pomocą w aplikacji dodaje do wiadomości wersję aplikacji, wersję iOS i model urządzenia.</p>
+<a class="button" href="mailto:ssx51f@gmail.com?subject=Wsparcie%20Billsheet">Napisz do wsparcia</a>
+</section>
+<section>
+<h2>Najczęściej zadawane pytania</h2>
+<div class="card">
+<h3>Jak dodać rachunek, subskrypcję lub umowę?</h3>
+<p>Na karcie Miesiąc stuknij <strong>Dodaj rachunek</strong> (albo <strong>+</strong>). Wpisz kwotę albo włącz <strong>Zmienna</strong>, jeśli za każdym razem jest inna (szacunkiem jest wtedy ostatnia kwota), wybierz, jak często się powtarza — „co miesiąc, 15. dnia” oznacza 15. dzień miesiąca, a nie co 30 dni — nadaj nazwę i stuknij <strong>Zachowaj pozycję</strong>. Przy umowie na siłownię, telefon czy ubezpieczenie włącz <strong>To jest umowa</strong> i wpisz początek umowy, okres minimalny, okres wypowiedzenia i to, na ile umowa się odnawia: edytor pokaże, do kiedy trzeba ją wypowiedzieć i kiedy dostaniesz przypomnienie.</p>
+</div>
+<div class="card">
+<h3>Co jest bezpłatne, a co się nie liczy?</h3>
+<p>Bezpłatnie, na zawsze: do sześciu aktywnych pozycji dowolnego rodzaju — rachunków, subskrypcji i umów — z całą historią płatności, umowami z terminami wypowiedzenia, przypomnieniami, widżetami, importem, eksportem i kopiami zapasowymi. Pozycje zakończone (wypowiedziana umowa, rachunek po dacie końcowej) i zarchiwizowane się nie liczą, a karta Miesiąc pokazuje, ile bezpłatnych pozycji już wykorzystano, zanim dodasz kolejną. Jednorazowe <strong>Pełne odblokowanie</strong> dodaje pozycje bez limitu i kilka list (prywatna, rodzina, firma). Nic, co zostało wpisane lub wyeksportowane, nigdy nie jest blokowane, a import zawsze trafia do aplikacji w całości. Nie ma subskrypcji ani reklam; App Store pokazuje cenę w Twojej walucie przed zakupem.</p>
+</div>
+<div class="card">
+<h3>Jak zaimportować rachunki z poprzedniej aplikacji?</h3>
+<p>Wyeksportuj rachunki do pliku CSV z poprzedniej aplikacji lub arkusza kalkulacyjnego. W Billsheet stuknij Więcej › Import › <strong>Importuj plik CSV</strong> i wybierz plik. Billsheet rozpoznaje kolumny (nazwę, kwotę, termin płatności i częstotliwość) oraz format daty, pozwala przypisać kolumnę, której nie rozpoznał, pokazuje podgląd z liczbą pozycji i importuje każdy wiersz — także w wersji bezpłatnej: jeśli plik zawiera więcej niż sześć pozycji, trafiają do aplikacji wszystkie, a potem możesz część z nich zarchiwizować albo odblokować aplikację. <strong>Importuj plik przykładowy</strong> pokazuje, jak wygląda plik, który działa.</p>
+</div>
+<div class="card">
+<h3>Dlaczego Billsheet nie łączy się z moim bankiem i nie wypowiada za mnie umów?</h3>
+<p>Bo Twoja lista powinna należeć do Ciebie. Billsheet nigdy nie prosi o logowanie do banku i niczego nigdzie nie wysyła: każdy rachunek dodajesz raz, a potem powtarza się sam. Billsheet nie płaci też rachunków i nie wysyła wypowiedzeń — mówi Ci, jaki jest ostatni dzień na wypowiedzenie, przypomina 14 i 3 dni wcześniej i zapisuje, kiedy umowa została wypowiedziana. Umowę wypowiadasz u dostawcy, tak jak przewiduje umowa; potem stuknij <strong>Zapisz wypowiedzenie umowy</strong> w pozycji, a trafi ona do sekcji Zakończone.</p>
+</div>
+<div class="card">
+<h3>Dlaczego przypomnienie nie dotarło?</h3>
+<p>Przypomnienia to lokalne powiadomienia z Twojego iPhone'a. Sprawdź, czy powiadomienia dla Billsheet są dozwolone w aplikacji Ustawienia iPhone'a › Powiadomienia (gdy są wyłączone, Więcej › Przypomnienia pokazuje <strong>Otwórz Ustawienia</strong>), i czy nie wycisza ich tryb Skupienia. W Więcej › Przypomnienia ustawisz, na ile dni przed terminem płatności i o której godzinie dostajesz przypomnienie; o umowach Billsheet przypomina 14 i 3 dni przed terminem wypowiedzenia. Płatność oznaczona jako opłacona nie jest przypominana ponownie, a pozycja z płatnością automatyczną oznacza się jako opłacona w dniu terminu, bez przypomnienia. Billsheet planuje przypomnienia od nowa przy każdym otwarciu i w tle; jeśli Odświeżanie w tle jest dla Billsheet wyłączone, otwieraj czasem aplikację, aby kolejne przypomnienia zostały zaplanowane.</p>
+</div>
+<div class="card">
+<h3>Jak oznaczyć płatność jako opłaconą?</h3>
+<p>Przesuń wiersz na karcie Miesiąc i stuknij <strong>Oznacz jako opłacone</strong>, użyj <strong>Oznacz jako opłacone</strong> bezpośrednio w przypomnieniu, bez otwierania aplikacji, albo oznacz płatność w historii płatności pozycji. Przy zmiennym rachunku możesz wpisać faktyczną kwotę. Pozycje z włączoną opcją <strong>Płatność automatyczna</strong> oznaczają się jako opłacone same w dniu terminu, ze znacznikiem „auto” i przyciskiem <strong>Cofnij</strong> na wypadek, gdyby pieniądze nie zeszły z konta.</p>
+</div>
+<div class="card">
+<h3>Co pokazują grupy, Kalendarz i widżety?</h3>
+<p>Ustaw dzień wypłaty w Więcej › <strong>Dzień wypłaty</strong> (dzień miesiąca, ostatni dzień roboczy albo co dwa tygodnie), a karta Miesiąc pogrupuje płatności na przed wypłatą, po wypłacie i opłacone; bez dnia wypłaty grupuje je według tygodni. Karta Kalendarz pokazuje miesiąc jako siatkę z kwotami pod datami i zaznacza dzień wypłaty oraz terminy wypowiedzenia. Widżety pokazują, ile jeszcze zostało do zapłaty w tym miesiącu, trzy następne płatności i następną płatność na ekranie blokady.</p>
+</div>
+<div class="card">
+<h3>Gdzie są moje kopie zapasowe?</h3>
+<p>Billsheet tworzy kopię zapasową na Twoim iPhonie raz dziennie, gdy coś dodasz, zmienisz lub oznaczysz, a także przed importem, przywracaniem i opcją Usuń wszystkie dane; przechowywanych jest dziesięć ostatnich wersji automatycznych. Stuknij <strong>Utwórz kopię teraz</strong> w Więcej › Kopie zapasowe, aby utworzyć własną wersję, która nigdy nie jest usuwana automatycznie. <strong>Udostępnij</strong> przy wersji zapisuje ją jako plik w aplikacji Pliki, na komputerze lub na innym urządzeniu.</p>
+</div>
+<div class="card">
+<h3>Jak przywrócić kopię zapasową?</h3>
+<p>Wybierz wersję w Więcej › Kopie zapasowe i stuknij <strong>Przywróć</strong> albo stuknij <strong>Przywróć z pliku…</strong>, aby otworzyć plik kopii. Najpierw zobaczysz podgląd tego, co zostanie dodane; <strong>Scal z moimi danymi</strong> dodaje to do aplikacji. Przywracanie zawsze scala kopię z Twoimi danymi: nic nie jest usuwane ani nadpisywane, a przed scaleniem Twoje bieżące dane są automatycznie zapisywane w kopii zapasowej.</p>
+</div>
+<div class="card">
+<h3>Jak przywrócić zakup na nowym iPhonie?</h3>
+<p>Zaloguj się na konto Apple, na którym kupiono odblokowanie, a następnie stuknij <strong>Przywróć zakupy</strong> w Więcej › Zakup lub na ekranie odblokowania. Zakup należy do Twojego konta Apple, więc działa na każdym iPhonie, na którym go używasz.</p>
+</div>
+<div class="card">
+<h3>Jak wyeksportować lub usunąć moje dane?</h3>
+<p>W Więcej › Eksport znajdziesz <strong>Eksportuj pozycje do CSV</strong> i <strong>Eksportuj płatności do CSV</strong>: każdą pozycję i każdą płatność, do otwarcia w programach Numbers, Excel lub Google Sheets. Aby usunąć wszystko, użyj opcji Więcej › <strong>Usuń wszystkie dane</strong>: po utworzeniu ostatniej kopii zapasowej usuwane są wszystkie listy, pozycje i płatności, a kopie zapasowe zostają, dopóki nie usuniesz ich w Więcej › Kopie zapasowe. Usunięcie aplikacji usuwa z Twojego iPhone'a wszystkie jej dane, łącznie z kopiami zapasowymi. Nie mamy żadnej kopii, ponieważ nic nigdy nie jest do nas wysyłane.</p>
+</div>
+<div class="card">
+<h3>Jakie urządzenia i języki są obsługiwane?</h3>
+<p>Billsheet działa na iPhonie z iOS 18 lub nowszym, w języku angielskim, niemieckim, francuskim, hiszpańskim, włoskim, portugalskim (Brazylia), niderlandzkim, polskim i rosyjskim. Kwoty, daty i pierwszy dzień tygodnia są zgodne z regionem ustawionym na Twoim iPhonie. Aplikacja działa w pełni offline.</p>
+</div>
+</section>
+</main>
+<footer class="wrap">
+    <nav><a href="./">Wsparcie</a> <a href="../privacy/">Polityka prywatności</a> <a href="../terms/">Warunki użytkowania</a></nav>
+    <p>&copy; 2026 MacLaren's Studio. Wszelkie prawa zastrzeżone.</p>
+</footer>
+</body>
+</html>

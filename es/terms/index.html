@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Condiciones de uso · Billsheet</title>
+    <meta name="description" content="Billsheet se ofrece bajo el contrato de licencia estándar de Apple. El Desbloqueo completo es una compra única a través del App Store.">
+    <meta name="color-scheme" content="light dark">
+    <link rel="canonical" href="https://starbuck-dev.github.io/Billsheet/es/terms/">
+    <link rel="alternate" hreflang="en" href="https://starbuck-dev.github.io/Billsheet/terms/">
+    <link rel="alternate" hreflang="de" href="https://starbuck-dev.github.io/Billsheet/de/terms/">
+    <link rel="alternate" hreflang="fr" href="https://starbuck-dev.github.io/Billsheet/fr/terms/">
+    <link rel="alternate" hreflang="es" href="https://starbuck-dev.github.io/Billsheet/es/terms/">
+    <link rel="alternate" hreflang="it" href="https://starbuck-dev.github.io/Billsheet/it/terms/">
+    <link rel="alternate" hreflang="pt-BR" href="https://starbuck-dev.github.io/Billsheet/pt-br/terms/">
+    <link rel="alternate" hreflang="nl" href="https://starbuck-dev.github.io/Billsheet/nl/terms/">
+    <link rel="alternate" hreflang="pl" href="https://starbuck-dev.github.io/Billsheet/pl/terms/">
+    <link rel="alternate" hreflang="ru" href="https://starbuck-dev.github.io/Billsheet/ru/terms/">
+    <link rel="alternate" hreflang="x-default" href="https://starbuck-dev.github.io/Billsheet/terms/">
+    <style>
+:root {
+    color-scheme: dark light;
+    --bg: #1C1E22; --card: #262930; --ink: #ECEAE3; --mute: #9A9890; --line: #343841; --brass: #C9A24A;
+    --warn: #E0A83C; --soft: rgba(201, 162, 74, 0.10); --on-brass: #1C1E22; --shadow: rgba(0, 0, 0, 0.45);
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: #F1EFEA; --card: #FFFFFF; --ink: #1C1E22; --mute: #66655E; --line: #DCD9D2; --brass: #8A6A1E;
+        --warn: #9A5B12; --soft: rgba(138, 106, 30, 0.08); --on-brass: #FFFFFF; --shadow: rgba(28, 30, 34, 0.12);
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0; background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+}
+a { color: var(--brass); text-underline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 16px 12px; }
+.brand {
+    color: var(--brass); font-weight: 600; font-size: 20px; letter-spacing: 0.02em; text-decoration: none;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.lang { position: relative; font-size: 15px; }
+.lang summary {
+    list-style: none; cursor: pointer; padding: 6px 14px; border-radius: 999px; white-space: nowrap;
+    background: var(--card); color: var(--ink); border: 1px solid var(--line);
+}
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: " \25BE"; color: var(--mute); }
+.lang ul {
+    position: absolute; right: 0; z-index: 2; margin: 8px 0 0; padding: 6px; list-style: none; min-width: 190px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px var(--shadow);
+}
+.lang li a { display: block; padding: 7px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.lang li a:hover, .lang li a:focus-visible { background: var(--soft); }
+.lang li a[aria-current="page"] { color: var(--brass); font-weight: 600; }
+.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px; margin: 16px 0;
+}
+h1 { font-size: 28px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 20px; margin: 28px 0 8px; }
+h3 { font-size: 17px; margin: 0 0 6px; }
+p, li { color: var(--mute); }
+strong { color: var(--ink); }
+.date {
+    font-size: 14px; color: var(--mute); margin: 0 0 20px;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.summary {
+    background: var(--soft); border-left: 3px solid var(--brass); border-radius: 8px; padding: 4px 16px;
+    margin: 16px 0;
+}
+.lead { font-size: 18px; color: var(--mute); }
+.button {
+    display: inline-block; background: var(--brass); color: var(--on-brass); font-weight: 600;
+    padding: 12px 28px; border-radius: 24px; text-decoration: none; margin-top: 8px;
+}
+.store { margin: 16px 0 0; }
+.links { display: grid; gap: 12px; margin: 16px 0; }
+.links a {
+    display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 20px; text-decoration: none;
+}
+.links strong { display: block; color: var(--ink); }
+.links span { color: var(--mute); font-size: 15px; }
+mark.todo { background: var(--warn); color: var(--on-brass); padding: 0 4px; border-radius: 4px; }
+footer { padding: 16px 16px 40px; font-size: 14px; color: var(--mute); }
+footer p { color: var(--mute); }
+footer a { color: var(--ink); }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+<header class="wrap top">
+    <a class="brand" href="../">Billsheet</a>
+    <details class="lang">
+        <summary aria-label="Idioma">Español</summary>
+        <ul>
+            <li><a href="../../terms/" hreflang="en" lang="en">English</a></li>
+            <li><a href="../../de/terms/" hreflang="de" lang="de">Deutsch</a></li>
+            <li><a href="../../fr/terms/" hreflang="fr" lang="fr">Français</a></li>
+            <li><a href="./" hreflang="es" lang="es" aria-current="page">Español</a></li>
+            <li><a href="../../it/terms/" hreflang="it" lang="it">Italiano</a></li>
+            <li><a href="../../pt-br/terms/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+            <li><a href="../../nl/terms/" hreflang="nl" lang="nl">Nederlands</a></li>
+            <li><a href="../../pl/terms/" hreflang="pl" lang="pl">Polski</a></li>
+            <li><a href="../../ru/terms/" hreflang="ru" lang="ru">Русский</a></li>
+        </ul>
+    </details>
+</header>
+<main class="wrap">
+<article class="card">
+<h1>Condiciones de uso</h1>
+<p class="date">Fecha de entrada en vigor: 9 de noviembre de 2026</p>
+<div class="summary"><p><strong>Resumen:</strong> El uso de Billsheet se rige por el <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Contrato de licencia de usuario final de aplicaciones con licencia</a> estándar de Apple. Los puntos siguientes explican cómo se aplica a la app.</p></div>
+<section>
+<h2>1. Licencia</h2>
+<p>Billsheet la ofrece MacLaren's Studio y se te concede bajo el <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Contrato de licencia de usuario final de aplicaciones con licencia (EULA)</a> de Apple. No añadimos condiciones propias más allá de lo que explica esta página.</p>
+</section>
+<section>
+<h2>2. Desbloqueo completo</h2>
+<p>Billsheet se descarga gratis y es gratuita para hasta seis elementos activos; los elementos finalizados y archivados no cuentan. El Desbloqueo completo, opcional, es una compra integrada única y no consumible que añade elementos ilimitados y varias listas (personal, familia, negocio). No es una suscripción y nunca se renueva. El App Store te muestra el precio en tu moneda antes de comprar. Puedes restaurar la compra en cualquier dispositivo con la misma Cuenta de Apple mediante Restaurar compras. Nada de lo que hayas introducido o exportado se bloquea nunca, con o sin el desbloqueo.</p>
+</section>
+<section>
+<h2>3. Pago y reembolsos</h2>
+<p>Apple procesa las compras según las condiciones del App Store. Los reembolsos los gestiona Apple; puedes solicitar uno en <a href="https://reportaproblem.apple.com/">reportaproblem.apple.com</a>.</p>
+</section>
+<section>
+<h2>4. Lo que Billsheet no hace</h2>
+<p>Billsheet es una hoja que llevas tú mismo. No se conecta a tu banco, no paga recibos, no detecta suscripciones y no envía cancelaciones a nadie. Pagar y cancelar sigue siendo cosa tuya y de tus proveedores.</p>
+</section>
+<section>
+<h2>5. Tus datos, fechas e importes</h2>
+<p>Tus elementos te pertenecen y se quedan en tu dispositivo (consulta la <a href="../privacy/">Política de privacidad</a>). Billsheet calcula los vencimientos, los totales y las fechas límite para cancelar solo a partir de lo que introduces. Comprueba las fechas de un contrato con el propio contrato y las condiciones de tu proveedor antes de basarte en ellas: lo que vale es el contrato, no la app. Los recordatorios los entrega iOS y pueden no llegar si las notificaciones están desactivadas o silenciadas. Como se describe en el EULA, la app se ofrece «tal cual».</p>
+</section>
+<section>
+<h2>6. Contacto</h2>
+<p>Preguntas sobre estas condiciones: <a href="mailto:ssx51f@gmail.com">ssx51f@gmail.com</a>.</p>
+</section>
+</article>
+</main>
+<footer class="wrap">
+    <nav><a href="../support/">Soporte</a> <a href="../privacy/">Política de privacidad</a> <a href="./">Condiciones de uso</a></nav>
+    <p>&copy; 2026 MacLaren's Studio. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>

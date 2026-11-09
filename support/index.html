@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Billsheet Support · Billsheet</title>
+    <meta name="description" content="Answers about adding bills and contracts, the free tier, importing a CSV file, reminders, backups and restoring, the one-time unlock, restoring a purchase, exporting and deleting data.">
+    <meta name="color-scheme" content="light dark">
+    <link rel="canonical" href="https://starbuck-dev.github.io/Billsheet/support/">
+    <link rel="alternate" hreflang="en" href="https://starbuck-dev.github.io/Billsheet/support/">
+    <link rel="alternate" hreflang="de" href="https://starbuck-dev.github.io/Billsheet/de/support/">
+    <link rel="alternate" hreflang="fr" href="https://starbuck-dev.github.io/Billsheet/fr/support/">
+    <link rel="alternate" hreflang="es" href="https://starbuck-dev.github.io/Billsheet/es/support/">
+    <link rel="alternate" hreflang="it" href="https://starbuck-dev.github.io/Billsheet/it/support/">
+    <link rel="alternate" hreflang="pt-BR" href="https://starbuck-dev.github.io/Billsheet/pt-br/support/">
+    <link rel="alternate" hreflang="nl" href="https://starbuck-dev.github.io/Billsheet/nl/support/">
+    <link rel="alternate" hreflang="pl" href="https://starbuck-dev.github.io/Billsheet/pl/support/">
+    <link rel="alternate" hreflang="ru" href="https://starbuck-dev.github.io/Billsheet/ru/support/">
+    <link rel="alternate" hreflang="x-default" href="https://starbuck-dev.github.io/Billsheet/support/">
+    <style>
+:root {
+    color-scheme: dark light;
+    --bg: #1C1E22; --card: #262930; --ink: #ECEAE3; --mute: #9A9890; --line: #343841; --brass: #C9A24A;
+    --warn: #E0A83C; --soft: rgba(201, 162, 74, 0.10); --on-brass: #1C1E22; --shadow: rgba(0, 0, 0, 0.45);
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: #F1EFEA; --card: #FFFFFF; --ink: #1C1E22; --mute: #66655E; --line: #DCD9D2; --brass: #8A6A1E;
+        --warn: #9A5B12; --soft: rgba(138, 106, 30, 0.08); --on-brass: #FFFFFF; --shadow: rgba(28, 30, 34, 0.12);
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0; background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+}
+a { color: var(--brass); text-underline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 16px 12px; }
+.brand {
+    color: var(--brass); font-weight: 600; font-size: 20px; letter-spacing: 0.02em; text-decoration: none;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.lang { position: relative; font-size: 15px; }
+.lang summary {
+    list-style: none; cursor: pointer; padding: 6px 14px; border-radius: 999px; white-space: nowrap;
+    background: var(--card); color: var(--ink); border: 1px solid var(--line);
+}
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: " \25BE"; color: var(--mute); }
+.lang ul {
+    position: absolute; right: 0; z-index: 2; margin: 8px 0 0; padding: 6px; list-style: none; min-width: 190px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px var(--shadow);
+}
+.lang li a { display: block; padding: 7px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.lang li a:hover, .lang li a:focus-visible { background: var(--soft); }
+.lang li a[aria-current="page"] { color: var(--brass); font-weight: 600; }
+.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px; margin: 16px 0;
+}
+h1 { font-size: 28px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 20px; margin: 28px 0 8px; }
+h3 { font-size: 17px; margin: 0 0 6px; }
+p, li { color: var(--mute); }
+strong { color: var(--ink); }
+.date {
+    font-size: 14px; color: var(--mute); margin: 0 0 20px;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.summary {
+    background: var(--soft); border-left: 3px solid var(--brass); border-radius: 8px; padding: 4px 16px;
+    margin: 16px 0;
+}
+.lead { font-size: 18px; color: var(--mute); }
+.button {
+    display: inline-block; background: var(--brass); color: var(--on-brass); font-weight: 600;
+    padding: 12px 28px; border-radius: 24px; text-decoration: none; margin-top: 8px;
+}
+.store { margin: 16px 0 0; }
+.links { display: grid; gap: 12px; margin: 16px 0; }
+.links a {
+    display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 20px; text-decoration: none;
+}
+.links strong { display: block; color: var(--ink); }
+.links span { color: var(--mute); font-size: 15px; }
+mark.todo { background: var(--warn); color: var(--on-brass); padding: 0 4px; border-radius: 4px; }
+footer { padding: 16px 16px 40px; font-size: 14px; color: var(--mute); }
+footer p { color: var(--mute); }
+footer a { color: var(--ink); }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+<header class="wrap top">
+    <a class="brand" href="../">Billsheet</a>
+    <details class="lang">
+        <summary aria-label="Language">English</summary>
+        <ul>
+            <li><a href="./" hreflang="en" lang="en" aria-current="page">English</a></li>
+            <li><a href="../de/support/" hreflang="de" lang="de">Deutsch</a></li>
+            <li><a href="../fr/support/" hreflang="fr" lang="fr">Français</a></li>
+            <li><a href="../es/support/" hreflang="es" lang="es">Español</a></li>
+            <li><a href="../it/support/" hreflang="it" lang="it">Italiano</a></li>
+            <li><a href="../pt-br/support/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+            <li><a href="../nl/support/" hreflang="nl" lang="nl">Nederlands</a></li>
+            <li><a href="../pl/support/" hreflang="pl" lang="pl">Polski</a></li>
+            <li><a href="../ru/support/" hreflang="ru" lang="ru">Русский</a></li>
+        </ul>
+    </details>
+</header>
+<main class="wrap">
+<section class="card">
+<h1>Billsheet Support</h1>
+<p class="lead">What is still due this month, and the last day you can still cancel each contract.</p>
+<p><strong>Need help?</strong> Write to <a href="mailto:ssx51f@gmail.com">ssx51f@gmail.com</a>. MacLaren's Studio usually answers within two working days. Tip: More › Contact Support in the app adds your app version, iOS version and device to the email.</p>
+<a class="button" href="mailto:ssx51f@gmail.com?subject=Billsheet%20Support">Email Support</a>
+</section>
+<section>
+<h2>Frequently asked questions</h2>
+<div class="card">
+<h3>How do I add a bill, a subscription or a contract?</h3>
+<p>On the Month tab, tap <strong>Add a bill</strong> (or <strong>+</strong>). Type the amount, or switch on <strong>Variable</strong> if it changes every time (the last amount is then the estimate), choose how it repeats — “Monthly · on the 15th” means the 15th, not every 30 days — give it a name and tap <strong>Save item</strong>. For a gym, phone or insurance contract, switch on <strong>This is a contract</strong> and fill in the start, the minimum term, the notice period and what it renews for: the editor shows the date you have to cancel by and when you will be reminded.</p>
+</div>
+<div class="card">
+<h3>What is free, and what doesn&#x27;t count?</h3>
+<p>Free, for good: up to six active items of any kind — bills, subscriptions and contracts — with all payment history, contracts with their cancel-by dates, reminders, widgets, import, export and backups. Ended items (a cancelled contract, a bill past its end date) and archived items don't count, and the Month tab shows how many free items you have used before you add one. The one-time <strong>Lifetime Unlock</strong> adds unlimited items and several sheets (personal, family, business). Nothing you entered or exported is ever locked, and an import always comes in whole. There is no subscription and no ads; the App Store shows the price in your currency before you buy.</p>
+</div>
+<div class="card">
+<h3>How do I import my bills from the app I used before?</h3>
+<p>Export your bills as a CSV file from the app or the spreadsheet you used before. In Billsheet, tap More › Import › <strong>Import a CSV file</strong> and choose the file. Billsheet detects the columns (name, amount, due date and how often it repeats) and the date format, lets you assign a column it could not recognise, shows a preview with the number of items, and imports every row — also on the free tier: if the file brings more than six items, all of them come in, and you can archive some of them or unlock. <strong>Import the sample file</strong> shows what a file that works looks like.</p>
+</div>
+<div class="card">
+<h3>Why doesn&#x27;t Billsheet connect to my bank or cancel contracts for me?</h3>
+<p>Because your sheet should stay yours. Billsheet never asks for a bank login and never sends anything anywhere: you add each bill once, and it repeats by itself. Billsheet doesn't pay bills and doesn't send cancellations either — it tells you the last day you can still cancel, reminds you 14 and 3 days before, and keeps a note of when you cancelled. You cancel with the provider, the way your contract says; then tap <strong>I've cancelled this contract</strong> on the item, and it moves to Ended.</p>
+</div>
+<div class="card">
+<h3>Why didn&#x27;t a reminder arrive?</h3>
+<p>Reminders are local notifications from your iPhone. Check that notifications for Billsheet are allowed in the iPhone's Settings › Notifications (More › Reminders shows <strong>Open Settings</strong> when they are off) and that a Focus does not silence them. More › Reminders sets how many days before the due date you are reminded and at what time; contracts are reminded 14 and 3 days before the cancel-by date. A payment marked paid is not reminded again, and an autopay item marks itself paid on the due day without a reminder. Billsheet plans the reminders again every time you open it and in the background; if Background App Refresh is off for Billsheet, open the app now and then so the next reminders are planned.</p>
+</div>
+<div class="card">
+<h3>How do I mark a payment as paid?</h3>
+<p>Swipe the row on the Month tab and tap <strong>Mark paid</strong>, use <strong>Mark paid</strong> in the reminder itself without opening the app, or mark it in the item's payment history. For a variable bill you can type the actual amount. Items with <strong>Autopay</strong> on mark themselves paid on the due day, tagged “auto”, with <strong>Undo</strong> if the money did not go out.</p>
+</div>
+<div class="card">
+<h3>What do the groups, the Calendar and the widgets show?</h3>
+<p>Set your payday in More › <strong>Payday</strong> (a day of the month, the last working day or every two weeks), and the Month tab groups the payments before payday, after payday and paid; without a payday it groups them by week. The Calendar tab shows the month as a grid with the amounts under the dates and marks payday and cancel-by days. The widgets show what is still due this month, the next three payments, and the next payment on the Lock Screen.</p>
+</div>
+<div class="card">
+<h3>Where are my backups?</h3>
+<p>Billsheet makes a backup on your iPhone once a day after you add, change or mark something, and before an import, a restore or Delete All Data; the last ten automatic versions are kept. Tap <strong>Back up now</strong> in More › Backups for a version of your own, which is never removed automatically. <strong>Share</strong> on a version saves it as a file to Files, a computer or another device.</p>
+</div>
+<div class="card">
+<h3>How do I restore a backup?</h3>
+<p>Choose a version in More › Backups and tap <strong>Restore</strong>, or tap <strong>Restore from file…</strong> to open a backup file. You first see a preview of what will be added; <strong>Merge into my data</strong> then adds it. Restoring always merges: nothing is deleted or overwritten, and your current data is backed up automatically first.</p>
+</div>
+<div class="card">
+<h3>How do I restore my purchase on a new iPhone?</h3>
+<p>Sign in with the Apple Account you bought the unlock with, then tap <strong>Restore Purchases</strong> in More › Purchase or on the unlock screen. The purchase belongs to your Apple Account, so it works on every iPhone you use with it.</p>
+</div>
+<div class="card">
+<h3>How do I export or delete my data?</h3>
+<p>More › Export gives <strong>Export items as CSV</strong> and <strong>Export payments as CSV</strong>: every item and every payment, for Numbers, Excel or Google Sheets. To remove everything, use More › <strong>Delete All Data</strong>: every sheet, item and payment goes after a last backup, and the backups stay until you delete them in More › Backups. Deleting the app removes all of its data, backups included, from your iPhone. We hold no copy, because nothing is ever sent to us.</p>
+</div>
+<div class="card">
+<h3>Which devices and languages are supported?</h3>
+<p>Billsheet runs on iPhone with iOS 18 or later, in English, German, French, Spanish, Italian, Brazilian Portuguese, Dutch, Polish and Russian. Amounts, dates and the first day of the week follow your iPhone's region. It works fully offline.</p>
+</div>
+</section>
+</main>
+<footer class="wrap">
+    <nav><a href="./">Support</a> <a href="../privacy/">Privacy Policy</a> <a href="../terms/">Terms of Use</a></nav>
+    <p>&copy; 2026 MacLaren's Studio. All rights reserved.</p>
+</footer>
+</body>
+</html>

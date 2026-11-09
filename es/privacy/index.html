@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Política de privacidad · Billsheet</title>
+    <meta name="description" content="Billsheet no recopila ningún dato: sin acceso al banco, sin cuenta, sin servidor, sin analítica, sin seguimiento. Tus recibos, suscripciones y contratos se quedan en tu iPhone, y los recordatorios son notificaciones locales.">
+    <meta name="color-scheme" content="light dark">
+    <link rel="canonical" href="https://starbuck-dev.github.io/Billsheet/es/privacy/">
+    <link rel="alternate" hreflang="en" href="https://starbuck-dev.github.io/Billsheet/privacy/">
+    <link rel="alternate" hreflang="de" href="https://starbuck-dev.github.io/Billsheet/de/privacy/">
+    <link rel="alternate" hreflang="fr" href="https://starbuck-dev.github.io/Billsheet/fr/privacy/">
+    <link rel="alternate" hreflang="es" href="https://starbuck-dev.github.io/Billsheet/es/privacy/">
+    <link rel="alternate" hreflang="it" href="https://starbuck-dev.github.io/Billsheet/it/privacy/">
+    <link rel="alternate" hreflang="pt-BR" href="https://starbuck-dev.github.io/Billsheet/pt-br/privacy/">
+    <link rel="alternate" hreflang="nl" href="https://starbuck-dev.github.io/Billsheet/nl/privacy/">
+    <link rel="alternate" hreflang="pl" href="https://starbuck-dev.github.io/Billsheet/pl/privacy/">
+    <link rel="alternate" hreflang="ru" href="https://starbuck-dev.github.io/Billsheet/ru/privacy/">
+    <link rel="alternate" hreflang="x-default" href="https://starbuck-dev.github.io/Billsheet/privacy/">
+    <style>
+:root {
+    color-scheme: dark light;
+    --bg: #1C1E22; --card: #262930; --ink: #ECEAE3; --mute: #9A9890; --line: #343841; --brass: #C9A24A;
+    --warn: #E0A83C; --soft: rgba(201, 162, 74, 0.10); --on-brass: #1C1E22; --shadow: rgba(0, 0, 0, 0.45);
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: #F1EFEA; --card: #FFFFFF; --ink: #1C1E22; --mute: #66655E; --line: #DCD9D2; --brass: #8A6A1E;
+        --warn: #9A5B12; --soft: rgba(138, 106, 30, 0.08); --on-brass: #FFFFFF; --shadow: rgba(28, 30, 34, 0.12);
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0; background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+}
+a { color: var(--brass); text-underline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 16px 12px; }
+.brand {
+    color: var(--brass); font-weight: 600; font-size: 20px; letter-spacing: 0.02em; text-decoration: none;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.lang { position: relative; font-size: 15px; }
+.lang summary {
+    list-style: none; cursor: pointer; padding: 6px 14px; border-radius: 999px; white-space: nowrap;
+    background: var(--card); color: var(--ink); border: 1px solid var(--line);
+}
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: " \25BE"; color: var(--mute); }
+.lang ul {
+    position: absolute; right: 0; z-index: 2; margin: 8px 0 0; padding: 6px; list-style: none; min-width: 190px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px var(--shadow);
+}
+.lang li a { display: block; padding: 7px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.lang li a:hover, .lang li a:focus-visible { background: var(--soft); }
+.lang li a[aria-current="page"] { color: var(--brass); font-weight: 600; }
+.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px; margin: 16px 0;
+}
+h1 { font-size: 28px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 20px; margin: 28px 0 8px; }
+h3 { font-size: 17px; margin: 0 0 6px; }
+p, li { color: var(--mute); }
+strong { color: var(--ink); }
+.date {
+    font-size: 14px; color: var(--mute); margin: 0 0 20px;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+.summary {
+    background: var(--soft); border-left: 3px solid var(--brass); border-radius: 8px; padding: 4px 16px;
+    margin: 16px 0;
+}
+.lead { font-size: 18px; color: var(--mute); }
+.button {
+    display: inline-block; background: var(--brass); color: var(--on-brass); font-weight: 600;
+    padding: 12px 28px; border-radius: 24px; text-decoration: none; margin-top: 8px;
+}
+.store { margin: 16px 0 0; }
+.links { display: grid; gap: 12px; margin: 16px 0; }
+.links a {
+    display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 20px; text-decoration: none;
+}
+.links strong { display: block; color: var(--ink); }
+.links span { color: var(--mute); font-size: 15px; }
+mark.todo { background: var(--warn); color: var(--on-brass); padding: 0 4px; border-radius: 4px; }
+footer { padding: 16px 16px 40px; font-size: 14px; color: var(--mute); }
+footer p { color: var(--mute); }
+footer a { color: var(--ink); }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+<header class="wrap top">
+    <a class="brand" href="../">Billsheet</a>
+    <details class="lang">
+        <summary aria-label="Idioma">Español</summary>
+        <ul>
+            <li><a href="../../privacy/" hreflang="en" lang="en">English</a></li>
+            <li><a href="../../de/privacy/" hreflang="de" lang="de">Deutsch</a></li>
+            <li><a href="../../fr/privacy/" hreflang="fr" lang="fr">Français</a></li>
+            <li><a href="./" hreflang="es" lang="es" aria-current="page">Español</a></li>
+            <li><a href="../../it/privacy/" hreflang="it" lang="it">Italiano</a></li>
+            <li><a href="../../pt-br/privacy/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+            <li><a href="../../nl/privacy/" hreflang="nl" lang="nl">Nederlands</a></li>
+            <li><a href="../../pl/privacy/" hreflang="pl" lang="pl">Polski</a></li>
+            <li><a href="../../ru/privacy/" hreflang="ru" lang="ru">Русский</a></li>
+        </ul>
+    </details>
+</header>
+<main class="wrap">
+<article class="card">
+<h1>Política de privacidad</h1>
+<p class="date">Fecha de entrada en vigor: 9 de noviembre de 2026</p>
+<div class="summary"><p><strong>Resumen:</strong> Billsheet no recopila ningún dato. No hay conexión con el banco, ni cuenta, ni servidor propio, ni analítica, ni publicidad, ni seguimiento. Tus recibos, suscripciones, contratos y pagos se quedan en tu iPhone, los recordatorios son notificaciones locales, y los archivos que exportas van solo adonde los envías.</p></div>
+<section>
+<h2>1. Quiénes somos</h2>
+<p>Billsheet es una app para iPhone ofrecida por MacLaren's Studio («nosotros»).</p>
+</section>
+<section>
+<h2>2. Datos que no recopilamos</h2>
+<p>No recopilamos, recibimos ni almacenamos ningún dato personal a través de la app. Billsheet no tiene inicio de sesión ni cuenta, nunca se conecta a tu banco, no usamos ningún servidor para ella y no contiene analítica, informes de fallos, publicidad ni otros SDK de terceros. La app no te rastrea entre apps ni sitios web, no usa el identificador de publicidad y nunca pide permiso para rastrearte.</p>
+</section>
+<section>
+<h2>3. Tus recibos y pagos</h2>
+<p>Todo lo que introduces (elementos, importes, vencimientos, fechas de contratos, notas de cancelación, enlaces de pago, notas y listas) y cada pago que marcas se guarda solo en tu iPhone, en el almacenamiento propio de la app. Algunos ajustes, como los días y la hora de tus recordatorios y tu moneda, se guardan en las preferencias de la app en el dispositivo. No podemos ver, leer ni recuperar nada de ello.</p>
+<p>Como el resto de los datos de las apps, tu hoja se incluye en las copias de seguridad de tu iPhone si usas la copia de seguridad en iCloud o haces copias en tu ordenador. Esas copias pertenecen a tu Cuenta de Apple o a tu ordenador, y no tenemos acceso a ellas. Billsheet no sincroniza tus datos entre dispositivos.</p>
+</section>
+<section>
+<h2>4. Recordatorios y actualización en segundo plano</h2>
+<p>Los recordatorios antes de un vencimiento y antes de una fecha límite para cancelar son notificaciones locales programadas en tu iPhone; no se envía nada a través de un servidor. La app pide permiso la primera vez que guardas un elemento con recordatorio, y puedes desactivar los recordatorios en Más › Recordatorios o en los Ajustes del iPhone. <strong>Marcar como pagado</strong> en un recordatorio registra el pago en tu iPhone. Para mantener al día los recordatorios y las marcas de pago automático, iOS deja que Billsheet se ejecute brevemente en segundo plano de vez en cuando; la app solo trabaja con los datos de tu iPhone y no envía nada.</p>
+</section>
+<section>
+<h2>5. Widgets</h2>
+<p>Los widgets leen lo que queda pendiente y los próximos pagos de un archivo que la app mantiene en una carpeta compartida de tu iPhone; ese archivo nunca sale del dispositivo.</p>
+</section>
+<section>
+<h2>6. Copias de seguridad y exportaciones</h2>
+<p>Las copias de seguridad que hace Billsheet son archivos en tu iPhone. Cuando compartes un archivo de copia o exportas un archivo CSV, el archivo se crea en tu iPhone y va solo adonde lo envías con la hoja de compartir (Mail, Mensajes, Archivos, AirDrop u otra app). Cuando importas un archivo, se lee en tu iPhone. Un enlace de pago que hayas guardado solo se abre en tu navegador cuando lo tocas. De estas transferencias se encarga Apple o la app que elijas, no nosotros.</p>
+</section>
+<section>
+<h2>7. Compras</h2>
+<p>El Desbloqueo completo, opcional, se compra a través del App Store. Apple procesa el pago; nunca vemos tu nombre, tu Cuenta de Apple ni tus datos de pago. La app solo pregunta al App Store si el desbloqueo se ha comprado con tu Cuenta de Apple. El tratamiento que Apple hace de estos datos se describe en la <a href="https://www.apple.com/legal/privacy/">Política de privacidad de Apple</a>.</p>
+</section>
+<section>
+<h2>8. Valoraciones</h2>
+<p>Una sola vez, después de que marques tu tercer pago como pagado, la app puede mostrar la solicitud de valoración estándar de Apple. Si valoras la app y cómo lo haces lo gestiona íntegramente Apple; la app solo guarda en tu iPhone cuántos pagos has marcado y si ya lo ha preguntado.</p>
+</section>
+<section>
+<h2>9. Correos al soporte</h2>
+<p>Si nos escribes, recibimos tu dirección de correo y lo que nos envías, incluidos la versión de la app, la versión de iOS y el dispositivo que añade el correo de soporte desde la app. Usamos estos datos solo para responderte, no los compartimos y los eliminamos cuando ya no son necesarios para tu consulta. La base jurídica es el art. 6, apartado 1, letras b) y f), del RGPD.</p>
+</section>
+<section>
+<h2>10. Eliminar tus datos</h2>
+<p>Puedes eliminar elementos y pagos sueltos, todo a la vez con Más › Eliminar todos los datos y las versiones de copia de seguridad en Más › Copias de seguridad. Al eliminar la app se borran de tu iPhone todos sus datos. Como no guardamos ningún dato sobre ti, no hay nada que podamos exportar o eliminar a petición tuya, salvo los correos que nos hayas enviado.</p>
+</section>
+<section>
+<h2>11. Menores</h2>
+<p>Billsheet es apta para todas las edades y no recopila datos de nadie, tampoco de menores.</p>
+</section>
+<section>
+<h2>12. Tus derechos</h2>
+<p>Según el RGPD y otras leyes similares, tienes derecho a acceder a tus datos personales, rectificarlos y suprimirlos, y a presentar una reclamación ante una autoridad de protección de datos. Como la app no recopila datos, estos derechos solo afectan a los correos que nos hayas enviado; escribe a <a href="mailto:ssx51f@gmail.com">ssx51f@gmail.com</a>.</p>
+</section>
+<section>
+<h2>13. Cambios</h2>
+<p>Si esta política cambia, la nueva versión se publica en esta página con una nueva fecha de entrada en vigor. Si la app empezara alguna vez a recopilar datos, la política lo indicará antes de que se publique esa versión.</p>
+</section>
+<section>
+<h2>14. Contacto</h2>
+<p>Si tienes preguntas sobre esta Política de privacidad, escribe a <a href="mailto:ssx51f@gmail.com">ssx51f@gmail.com</a>.</p>
+</section>
+</article>
+</main>
+<footer class="wrap">
+    <nav><a href="../support/">Soporte</a> <a href="./">Política de privacidad</a> <a href="../terms/">Condiciones de uso</a></nav>
+    <p>&copy; 2026 MacLaren's Studio. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>
